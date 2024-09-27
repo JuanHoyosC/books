@@ -1,0 +1,7 @@
+<ion-button [type]="type" [disabled]="disabled || loading">
+  @if(!loading) {
+    {{ text }}
+  }@else {
+    <ion-spinner name="crescent"></ion-spinner>
+  }
+</ion-button>
