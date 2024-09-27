@@ -35,3 +35,103 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+* {
+    font-family: "Nunito", sans-serif;
+}
+
+ion-item, ion-list, ion-list-header, ion-input {
+    --padding: 0;
+    --padding-end: 0;
+    --padding-start: 0;
+    --padding-left: 0;
+    --padding-right: 0;
+    --inner-padding-end: 0;
+    --ion-safe-area-left: 0;
+    --ion-safe-area-right: 0;
+}
+
+
+.auth {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    ion-img {
+        display: block;
+        width: 112px;
+        margin: 0 auto;
+    }
+
+    ion-list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    ion-label {
+        display: block;
+        margin-bottom: 4px;
+    }
+
+    ion-input {
+        background-color: #00000011;
+        --padding-start: 8px;
+        border-radius: 4px;
+    }
+
+    ion-button {
+        display: block;
+        width: 100%;
+        min-height: 48px;
+    }
+
+    .separator-container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .separator {
+        display: inline-block;
+        width: 120px;
+        height: 1px;
+        background-color: rgba(110, 110, 110, 0.189);
+    }
+
+    ion-col, ion-row, ion-grid {
+        padding: 0;
+    }
+
+    ion-col:first-child {
+        padding-right: 8px;
+    }
+
+    .btn-external-auth {
+        border: 1px solid #00000011;
+    }
+
+    a {
+        text-decoration: none;
+        font-weight: var(--font-bold);
+    }
+}
+
+.w-100 {
+    width: 100%;
+}
+
+ion-button {
+    margin: 0;
+}
+
+.required::after {
+    content: " *";
+    color: var(--ion-color-danger);
+}
+
+.error {
+    display: block;
+    margin-top: 4px;
+}

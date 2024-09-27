@@ -1,2 +1,85 @@
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
+/* Archivo: src/global.scss o variables.scss */
+:root {
+    font-size: 87.5%; /* Esto hace que 1rem sea igual a 14px (87.5% de 16px) */
+  
+    --font-size-h1: 1.75rem;  /* 24.5px */
+    --font-size-h2: 1.5rem;   /* 21px */
+    --font-size-h3: 1.25rem;  /* 17.5px */
+    --font-size-p: 1rem;      /* 14px */
+    --font-size-small: 0.875rem; /* 12.25px */
+    --font-size-very-small: 0.75rem; /* 10.5px */
+    --font-size-tiny: 0.625rem; /* 8.75px */
+    --font-size-button: 1rem;  /* 14px */
+    --font-bold: 700;
+    --font--semibold: 500;
+
+    --ion-color-favorite: #69bb7b;
+    --ion-color-favorite-rgb: 105,187,123;
+    --ion-color-favorite-contrast: #ffffff;
+    --ion-color-favorite-contrast-rgb: 255,255,255;
+    --ion-color-favorite-shade: #5ca56c;
+    --ion-color-favorite-tint: #78c288;
+
+    --ion-color-facebook: #3b5998;
+    --ion-color-facebook-rgb: 59,89,152;
+    --ion-color-facebook-contrast: #ffffff;
+    --ion-color-facebook-contrast-rgb: 255,255,255;
+    --ion-color-facebook-shade: #344e86;
+    --ion-color-facebook-tint: #4f6aa2;
+
+    .ion-color-google {
+      --ion-color-base: var(--ion-color-favorite);
+      --ion-color-base-rgb: var(--ion-color-favorite-rgb);
+      --ion-color-contrast: var(--ion-color-favorite-contrast);
+      --ion-color-contrast-rgb: var(--ion-color-favorite-contrast-rgb);
+      --ion-color-shade: var(--ion-color-favorite-shade);
+      --ion-color-tint: var(--ion-color-favorite-tint);
+    }
+
+    .ion-color-facebook {
+      --ion-color-base: var(--ion-color-facebook);
+      --ion-color-base-rgb: var(--ion-color-facebook-rgb);
+      --ion-color-contrast: var(--ion-color-facebook-contrast);
+      --ion-color-contrast-rgb: var(--ion-color-facebook-contrast-rgb);
+      --ion-color-shade: var(--ion-color-facebook-shade);
+      --ion-color-tint: var(--ion-color-facebook-tint);
+    }
+    
+  }
+
+  h1 {
+    font-size: var(--font-size-h1);
+    font-weight: var(--font-bold);
+  }
+  
+  h2 {
+    font-size: var(--font-size-h2);
+  }
+  
+  h3 {
+    font-size: var(--font-size-h3);
+  }
+  
+  p, ion-input, ion-label {
+    font-size: var(--font-size-p);
+  }
+  
+  .small-text, small {
+    font-size: var(--font-size-small);
+  }
+  
+  .very-small-text {
+    font-size: var(--font-size-very-small);
+  }
+  
+  .tiny-text {
+    font-size: var(--font-size-tiny);
+  }
+  
+  ion-button {
+    font-size: var(--font-size-button);
+    text-transform: none;
+  }
+  
