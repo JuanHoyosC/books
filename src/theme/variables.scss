@@ -3,7 +3,7 @@
 /* Archivo: src/global.scss o variables.scss */
 :root {
     font-size: 87.5%; /* Esto hace que 1rem sea igual a 14px (87.5% de 16px) */
-  
+    --ion-font-family: "Nunito", sans-serif;
     --font-size-h1: 1.75rem;  /* 24.5px */
     --font-size-h2: 1.5rem;   /* 21px */
     --font-size-h3: 1.25rem;  /* 17.5px */
@@ -14,9 +14,12 @@
     --font-size-button: 1rem;  /* 14px */
     --font-bold: 700;
     --font--semibold: 500;
+    --bubble-width: 96px;
 
-    --ion-color-favorite: #69bb7b;
-    --ion-color-favorite-rgb: 105,187,123;
+    
+
+    --ion-color-favorite: #db2b14;
+    --ion-color-favorite-rgb: 219, 43, 20;
     --ion-color-favorite-contrast: #ffffff;
     --ion-color-favorite-contrast-rgb: 255,255,255;
     --ion-color-favorite-shade: #5ca56c;
@@ -56,6 +59,7 @@
   
   h2 {
     font-size: var(--font-size-h2);
+    font-weight: var(--font-bold);
   }
   
   h3 {
@@ -78,8 +82,13 @@
     font-size: var(--font-size-tiny);
   }
   
-  ion-button {
+  ion-button, button {
     font-size: var(--font-size-button);
     text-transform: none;
   }
   
+  ion-label, .label-stacked {
+    font-size: var(--font-size-p) !important;
+    display: block;
+    transform: none !important;
+  }

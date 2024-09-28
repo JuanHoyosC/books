@@ -1,91 +1,91 @@
-<ion-content [fullscreen]="true">
-  <form class="auth" [formGroup]="form" (submit)="submit()">
-    <ion-img src="/assets/icon/auth/welcome.jpg"></ion-img>
-    <ion-list-header>
-      <ion-text color="primary" class="ion-text-center w-100">
-        <h2 class="ion-no-margin">Welcome to booking</h2>
+<ion-content [fullscreen]="true" class="no-scroll">
+  <div class="container">
+    <header>
+      <!--<ion-img src="/assets/icon/auth/welcome.jpg"></ion-img>-->
+      <ion-text color="primary" class="ion-text-center w-100"  >
+        <h2 class="ion-no-margin ion-margin-bottom">Login</h2>
       </ion-text>
-    </ion-list-header>
-    <ion-list lines="none" class="ion-padding">
-      <ion-item>
-        <ion-label position="stacked" class="required">Username</ion-label>
-        <ion-input
-          type="text"
-          placeholder="Enter your username"
-          formControlName="username"
-        ></ion-input>
-        @if(form.controls['username'].invalid && form.controls['username'].touched) {
-          <ion-text color="danger" class="error">
-            <small>El campo no cumple el patron</small>
-          </ion-text>
-        }
-      </ion-item>
-      <ion-item>
-        <ion-label position="stacked" class="required">Password</ion-label>
-        <ion-input
-          type="password"
-          placeholder="Enter your password"
-          formControlName="password"
-        >
-          <ion-input-password-toggle slot="end"></ion-input-password-toggle>
-        </ion-input>
-        @if(form.controls['password'].invalid && form.controls['password'].touched) {
-          <ion-text color="danger" class="error">
-            <small>El campo no cumple el patron</small>
-          </ion-text>
-        }
-      </ion-item>
-      <ion-text color="primary" class="ion-text-end w-100">
-        <span (click)="openResetPasswordComponent()">Forgot password?</span>
-      </ion-text>
-      <ion-item>
-        <ion-button-loading
-          class="w-100"
-          type="submit"
-          text="Login"
-          [disabled]="form.invalid || loading"
-          [loading]="loading"
-        ></ion-button-loading>
-      </ion-item>
-      <ion-text
-        color="primary"
-        class="ion-text-center w-100 separator-container"
-      >
-        <span class="separator"></span>
-        <span>Or login with</span>
-        <span class="separator"></span>
-      </ion-text>
-      <ion-item>
-        <ion-grid fixed>
-          <ion-row class="ion-justify-content-center">
-            <ion-col size="6">
-              <ion-button
-                class="btn-external-auth"
-                color="primary"
-                fill="outline"
-                (click)="signInWithGoogle()"
-              >
-                <ion-icon name="logo-google" slot="start"></ion-icon>
-                Google
-              </ion-button>
-            </ion-col>
-            <ion-col size="6">
-              <ion-button color="facebook" class="btn-external-auth">
-                <ion-icon name="logo-facebook" slot="start"></ion-icon>
-                Facebook
-              </ion-button>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-item>
-      <ion-item>
-        <ion-text class="ion-text-center w-100">
-          <span>Don't have an account? </span>
-          <ion-text color="primary">
-            <a routerLink="/auth/signup">Register Now</a>
-          </ion-text>
+    </header>
+    <form class="auth ion-padding" [formGroup]="form" (submit)="submit()">
+      <ion-list lines="none">
+        <ion-item>
+          <ion-label position="stacked" class="required">Username</ion-label>
+          <ion-input
+            type="text"
+            placeholder="Enter your username"
+            formControlName="username"
+          ></ion-input>
+          @if(form.controls['username'].invalid && form.controls['username'].touched) {
+            <ion-text color="danger" class="error">
+              <small>El campo no cumple el patron</small>
+            </ion-text>
+          }
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked" class="required">Password</ion-label>
+          <ion-input
+            type="password"
+            placeholder="Enter your password"
+            formControlName="password"
+          >
+            <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+          </ion-input>
+          @if(form.controls['password'].invalid && form.controls['password'].touched) {
+            <ion-text color="danger" class="error">
+              <small>El campo no cumple el patron</small>
+            </ion-text>
+          }
+        </ion-item>
+        <ion-text color="primary" class="ion-text-end w-100">
+          <span (click)="openResetPasswordComponent()">Forgot password?</span>
         </ion-text>
-      </ion-item>
-    </ion-list>
-  </form>
+        <ion-item>
+          <ion-button-loading
+            class="w-100"
+            type="submit"
+            text="Login"
+            [disabled]="form.invalid || loading"
+            [loading]="loading"
+          ></ion-button-loading>
+        </ion-item>
+        <ion-text
+          color="primary"
+          class="ion-text-center w-100 separator-container"
+        >
+          <span class="separator"></span>
+          <span class="separator-text">Or login with</span>
+          <span class="separator"></span>
+        </ion-text>
+        <ion-item>
+          <ion-grid fixed>
+            <ion-row class="ion-justify-content-center">
+              <ion-col size="2">
+                <ion-button
+                  color="google"
+                  (click)="signInWithGoogle()"
+                >
+                  <ion-icon name="logo-google" slot="icon-only"></ion-icon>
+                </ion-button>
+              </ion-col>
+              <ion-col size="2">
+                <ion-button color="facebook">
+                  <ion-icon name="logo-facebook" slot="icon-only"></ion-icon>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+        <ion-item>
+          <ion-text class="ion-text-center w-100">
+            <span>Don't have an account? </span>
+            <ion-text color="primary">
+              <a routerLink="/auth/signup">Register Now</a>
+            </ion-text>
+          </ion-text>
+        </ion-item>
+      </ion-list>
+    </form>
+    <div class="bubble bottom left"></div>
+    <div class="bubble small top right"></div>
+  </div>
 </ion-content>

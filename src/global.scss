@@ -38,6 +38,7 @@
 
 * {
     font-family: "Nunito", sans-serif;
+    --font-family: "Nunito", sans-serif;
 }
 
 ion-item, ion-list, ion-list-header, ion-input {
@@ -51,12 +52,19 @@ ion-item, ion-list, ion-list-header, ion-input {
     --ion-safe-area-right: 0;
 }
 
-
-.auth {
-    min-height: 100vh;
+.container {
     display: flex;
     flex-direction: column;
+    min-height:100vh;
+    width: 100%;
     justify-content: center;
+    align-items: center;
+}
+
+
+.auth {
+    max-width: 412px;
+    width: 100%;
 
     ion-img {
         display: block;
@@ -72,7 +80,8 @@ ion-item, ion-list, ion-list-header, ion-input {
 
     ion-label {
         display: block;
-        margin-bottom: 4px;
+        margin: 0;
+        margin-bottom: 8px !important;
     }
 
     ion-input {
@@ -87,29 +96,12 @@ ion-item, ion-list, ion-list-header, ion-input {
         min-height: 48px;
     }
 
-    .separator-container {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-
-    .separator {
-        display: inline-block;
-        width: 120px;
-        height: 1px;
-        background-color: rgba(110, 110, 110, 0.189);
-    }
-
     ion-col, ion-row, ion-grid {
         padding: 0;
     }
 
     ion-col:first-child {
         padding-right: 8px;
-    }
-
-    .btn-external-auth {
-        border: 1px solid #00000011;
     }
 
     a {
@@ -134,4 +126,54 @@ ion-button {
 .error {
     display: block;
     margin-top: 4px;
+}
+
+.bubble {
+    position: fixed;
+    background-color: rgba(var(--ion-color-primary-rgb), 0.3);
+    width: var(--bubble-width);
+    height: var(--bubble-width);
+    border-radius: 50%;
+}
+
+.bubble.bottom {
+    bottom: calc(-1 * var(--bubble-width)/3);
+}
+
+.bubble.top {
+    top: calc(-1 * var(--bubble-width)/2);
+}
+
+.bubble.left {
+    left: -32px
+}
+
+.bubble.right {
+    right: 10%;
+}
+
+.bubble.small {
+    --bubble-width: 56px;
+}
+
+.no-scroll {
+    --overflow: hidden;
+    overflow: hidden;
+}
+
+.separator-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.separator {
+    display: inline-block;
+    width: 120px;
+    height: 1px;
+    background-color: rgba(110, 110, 110, 0.189);
+}
+
+.separator-text {
+    min-width: max-content;
 }
