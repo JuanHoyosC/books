@@ -1,3 +1,33 @@
-<p>
-  confirm-sign-up works!
-</p>
+<ion-content [fullscreen]="true" class="no-scroll">
+  <div class="container">
+    <header>
+      <!--<ion-img src="/assets/icon/auth/welcome.jpg"></ion-img>-->
+      <ion-text color="primary" class="ion-text-center w-100"  >
+        <h2 class="ion-no-margin ion-margin-bottom">Confirm Sign Up</h2>
+      </ion-text>
+    </header>
+    <form class="auth ion-padding" [formGroup]="form" (submit)="submit()">
+      <ion-list lines="none">
+        <ion-item>
+          <app-verify-input [positions]="positions" formControlName="code" class="w-100"></app-verify-input>
+          @if(form.controls['code'].invalid && form.controls['code'].touched) {
+            <ion-text color="danger" class="error">
+              <small>El campo no cumple el patron</small>
+            </ion-text>
+          }
+        </ion-item>
+        <ion-item>
+          <app-ion-button-loading
+            class="w-100"
+            type="submit"
+            text="Login"
+            [disabled]="form.invalid || loading"
+            [loading]="loading"
+          ></app-ion-button-loading>
+        </ion-item>
+      </ion-list>
+    </form>
+    <div class="bubble bottom left"></div>
+    <div class="bubble small top right"></div>
+  </div>
+</ion-content>

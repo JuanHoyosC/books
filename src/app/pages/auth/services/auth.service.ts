@@ -37,6 +37,7 @@ export class AuthService {
   }
 
   async signUp(user: User): Promise<SignUpOutput> {
+    console.log(user)
     return signUp({
       username: user.username,
       password: user.password,

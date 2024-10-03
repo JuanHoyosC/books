@@ -55,7 +55,7 @@ export class SigninPage {
       }
 
       if (nextStep.signInStep === "DONE") {
-        this.goToAttendeesPage();
+        this.goToHomePage();
       }
     } catch (error) {
       this.authService.manageAuthErrors(error);
@@ -80,8 +80,8 @@ export class SigninPage {
     await modal.present();
     const { data } = await modal.onWillDismiss();
 
-    if (data && data.signUpStep === "DONE") {
-      this.goToAttendeesPage();
+    if (data?.signUpStep === "DONE") {
+      this.goToHomePage();
     }
   }
 
@@ -97,7 +97,7 @@ export class SigninPage {
     await modal.present();
   }
 
-  goToAttendeesPage() {
+  goToHomePage() {
     this.router.navigateByUrl("/tabs/home");
   }
 

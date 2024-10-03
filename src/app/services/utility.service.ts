@@ -18,6 +18,16 @@ export class UtilityService {
     };
   }
 
+  digitValidator(position: number): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: boolean } | null => {
+      // Comprobar si el valor del campo está vacío o solo contiene espacios en blanco
+      if (control.value && control.value.toString().trim().length !== position) {
+        return { invalid: true };
+      }
+      return null;
+    };
+  }
+
   matchFieldsValidator(
     controlName1: string,
     controlName2: string

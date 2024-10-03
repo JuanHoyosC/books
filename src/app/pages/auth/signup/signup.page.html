@@ -40,6 +40,7 @@
             type="password"
             placeholder="Enter your password"
             formControlName="password"
+            autocomplete="new-password"
           >
             <ion-input-password-toggle slot="end"></ion-input-password-toggle>
           </ion-input>
@@ -50,13 +51,13 @@
           }
         </ion-item>
         <ion-item>
-          <ion-button-loading
+          <app-ion-button-loading
             class="w-100"
             type="submit"
             text="Login"
             [disabled]="form.invalid || loading"
             [loading]="loading"
-          ></ion-button-loading>
+          ></app-ion-button-loading>
         </ion-item>
         <ion-text
           color="primary"
