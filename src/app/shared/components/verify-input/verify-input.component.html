@@ -1,0 +1,25 @@
+<ion-label class="ion-text-center ion-margin-bottom"
+  >Ingresa los {{ positions }} que recibiste en tu correo electronico o
+  telefono</ion-label
+>
+<div class="digits-container">
+  @for(digit of digits; track $index) {
+  <div class="digit-container">
+    <ion-input
+      #IonInput
+      type="text"
+      inputmode="numeric"
+      name="digit{{ $index }}"
+      id="digit{{ $index }}"
+      class="no-spinner"
+      (ionInput)="validateSingleDigit($event, $index)"
+      (paste)="onPaste($event)"
+      (keydown)="onKeyDown($event, $index)"
+      (click)="setInputFocus($index)"
+      minlength="1"
+      maxlength="1"
+      required
+    ></ion-input>
+  </div>
+  }
+</div>
