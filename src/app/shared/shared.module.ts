@@ -4,16 +4,18 @@ import { IonButtonLoadingComponent } from './components/ion-button-loading/ion-b
 import { IonicModule } from '@ionic/angular';
 import { VerifyInputComponent } from './components/verify-input/verify-input.component';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
 @NgModule({
   declarations: [IonButtonLoadingComponent, VerifyInputComponent],
-  exports: [IonButtonLoadingComponent, VerifyInputComponent],
+  exports: [IonButtonLoadingComponent, VerifyInputComponent, TranslateModule],
   imports: [
     CommonModule,
     IonicModule,
-    FormsModule
+    FormsModule,
+    TranslateModule
   ]
 })
 export class SharedModule { }
