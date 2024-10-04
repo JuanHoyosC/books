@@ -10,6 +10,7 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-reset-password',
@@ -20,9 +21,10 @@ import { SharedModule } from 'src/app/shared/shared.module';
 })
 export class ResetPasswordComponent {
   @Input() username: string = '';
-  authService = inject(AuthService);
-  modalCtrl = inject(ModalController);
+  translateService = inject(TranslateService);
   utilityService = inject(UtilityService);
+  modalCtrl = inject(ModalController); 
+  authService = inject(AuthService);
   fb = inject(FormBuilder);
   form: FormGroup;
   loading: boolean = false;
@@ -85,7 +87,7 @@ export class ResetPasswordComponent {
       if (nextStep.resetPasswordStep === 'CONFIRM_RESET_PASSWORD_WITH_CODE') {
         this.step = 'RESET_PASSWORD';
         this.initResendCodeTimer();
-        //this.showSendEmailMessage();
+        this.showSendEmailMessage();
       }
     } catch (error) {
       this.authService.manageAuthErrors(error);
@@ -96,6 +98,7 @@ export class ResetPasswordComponent {
     try {
       const { username, password, code } = this.form.value;
       await this.authService.confirmResetPassword(username, password, code);
+      this.showResetPasswordMessage();
       this.modalCtrl.dismiss();
     } catch (error) {
       this.authService.manageAuthErrors(error);
@@ -113,5 +116,23 @@ export class ResetPasswordComponent {
       this.timer--;
       if (this.timer === 0) clearInterval(interval);
     }, 1000);
+  }
+
+  showResetPasswordMessage() {
+    this.utilityService.showToast({
+      color: "success",
+      message: this.translateService.instant('auth.general.resetPasswordSuccessfullyMessage'),
+      duration: 10000,
+      icon: "checkmark-circle-sharp",
+    });
+  }
+
+  showSendEmailMessage() {
+    this.utilityService.showToast({
+      color: "success",
+      message: this.translateService.instant('auth.general.sendCodeMessage'),
+      duration: 10000,
+      icon: "checkmark-circle-sharp",
+    });
   }
 }

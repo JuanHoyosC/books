@@ -11,6 +11,8 @@ import { UtilityService } from 'src/app/services/utility.service';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AuthService } from '../../services/auth.service';
 import { ConfirmSignUpOutput } from 'aws-amplify/auth';
+import { TranslateService } from '@ngx-translate/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-confirm-sign-up',
@@ -21,10 +23,12 @@ import { ConfirmSignUpOutput } from 'aws-amplify/auth';
 })
 export class ConfirmSignUpComponent {
   @Input() username: string = '';
-  authService = inject(AuthService);
-  modalCtrl = inject(ModalController);
+  translateService = inject(TranslateService);
   utilityService = inject(UtilityService);
+  modalCtrl = inject(ModalController);
+  authService = inject(AuthService);
   fb = inject(FormBuilder);
+  router = inject(Router);
   form: FormGroup;
   loading: boolean = false;
   positions: number = 6;
@@ -57,9 +61,19 @@ export class ConfirmSignUpComponent {
           confirmationCode: this.form.value.code,
         });
 
-      this.modalCtrl.dismiss(response);
+      this.modalCtrl.dismiss(null);
+      this.showMessageSignUpSuccess();
     } catch (error) {
       this.authService.manageAuthErrors(error);
     }
+  }
+
+  showMessageSignUpSuccess() {
+    this.utilityService.showToast({
+      color: "success",
+      message: this.translateService.instant('auth.general.signupSuccessMessage'),
+      duration: 10000,
+      icon: "checkmark-circle-sharp",
+    });
   }
 }

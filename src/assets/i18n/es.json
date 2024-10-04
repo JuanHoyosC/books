@@ -1,0 +1,65 @@
+{
+  "auth": {
+    "cognito": {
+      "Password did not conform with policy: Password not long enough": "La contraseña no cumple con la política: La contraseña no es lo suficientemente larga",
+      "User already exists": "El usuario ya existe",
+      "Incorrect username or password.": "Usuario o contraseña incorrectos",
+      "Invalid verification code provided, please try again.": "Código de verificación inválido, por favor inténtelo de nuevo",
+      "Password attempts exceeded": "Límite de intentos superado, por favor intente después de un tiempo",
+      "Attempt limit exceeded, please try after some time.": "Límite de intentos superado, por favor intente después de un tiempo",
+      "username is required to resetPassword": "El usuario es requerido para restablecer la contraseña"
+    },
+    "general": {
+      "username": "Usuario",
+      "password": "Contraseña",
+      "email": "Correo electrónico",
+      "errors": {
+        "username": "Usuario inválido. Solo se permiten letras (a-z), números (0-9) y caracteres (. _ -)",
+        "email": "Correo electrónico no válido",
+        "password": "Contraseña no válida. Debe tener un mínimo de 6 caracteres.",
+        "required": "Campo requerido",
+        "passwordMismatch": "Las contraseñas no coinciden."
+      },
+      "code": "Código",
+      "send": "Enviar",
+      "goToSignin": "Ir a iniciar sesión",
+      "sendCodeMessage": "Se ha enviado un código de verificación a su correo electrónico.",
+      "resetPasswordSuccessfullyMessage": "Su contraseña ha sido restablecida exitosamente",
+      "signupSuccessMessage": "Autenticación exitosa"
+    },
+    "signin": {
+      "title": "Iniciar sesión",
+      "btnLogin": "Ingresar",
+      "resetPassword": "Restablecer contraseña",
+      "dontHaveAccount": "¿No tienes una cuenta?"
+    },
+    "signup": {
+      "title": "Registrarse",
+      "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+      "btnRegister": "Registrarse"
+    },
+    "resetPassword": {
+      "title": "Restablecer contraseña",
+      "resendCode": "Reenviar código",
+      "tryAgain": "Inténtalo de nuevo en {{time}} seg",
+      "repeatPassword": "Confirmar Contraseña"
+    },
+    "confirmSignup": {
+      "title": "Código de verificación",
+      "code": "Ingrese el código de verificación que fue enviado a su correo electrónico.",
+      "btnVerify": "Verificar"
+    }
+  },
+  "general": {
+    "en": "Inglés",
+    "es": "Español",
+    "search": "Buscar",
+    "requiredField": "Campo requerido",
+    "savingInfo": "Guardar información",
+    "loading": "Cargando información",
+    "newMessage": "Has recibido un nuevo mensaje",
+    "cancel": "Cancelar",
+    "ok": "OK",
+    "language": "Idioma"
+  }
+}

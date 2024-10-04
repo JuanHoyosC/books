@@ -2,49 +2,58 @@
   <div class="container">
     <header>
       <!--<ion-img src="/assets/icon/auth/welcome.jpg"></ion-img>-->
-      <ion-text color="primary" class="ion-text-center w-100"  >
-        <h2 class="ion-no-margin ion-margin-bottom">Login</h2>
+      <ion-text color="primary" class="ion-text-center w-100">
+        <h2 class="ion-no-margin ion-margin-bottom">
+          {{'auth.signin.title' | translate}}
+        </h2>
       </ion-text>
     </header>
     <form class="auth ion-padding" [formGroup]="form" (submit)="submit()">
       <ion-list lines="none">
         <ion-item>
-          <ion-label position="stacked" class="required">Username</ion-label>
+          <ion-label position="stacked" class="required"
+            >{{'auth.general.username' | translate}}</ion-label
+          >
           <ion-input
             type="text"
-            placeholder="Enter your username"
             formControlName="username"
           ></ion-input>
-          @if(form.controls['username'].invalid && form.controls['username'].touched) {
-            <ion-text color="danger" class="error">
-              <small>El campo no cumple el patron</small>
-            </ion-text>
+          @if(form.controls['username'].invalid &&
+          form.controls['username'].touched) {
+          <ion-text color="danger" class="error">
+            <small>{{'auth.general.errors.username' | translate}}</small>
+          </ion-text>
           }
         </ion-item>
         <ion-item>
-          <ion-label position="stacked" class="required">Password</ion-label>
+          <ion-label position="stacked" class="required"
+            >{{'auth.general.password' | translate}}</ion-label
+          >
           <ion-input
             type="password"
-            placeholder="Enter your password"
+
             formControlName="password"
             autocomplete="new-password"
           >
             <ion-input-password-toggle slot="end"></ion-input-password-toggle>
           </ion-input>
-          @if(form.controls['password'].invalid && form.controls['password'].touched) {
-            <ion-text color="danger" class="error">
-              <small>El campo no cumple el patron</small>
-            </ion-text>
+          @if(form.controls['password'].invalid &&
+          form.controls['password'].touched) {
+          <ion-text color="danger" class="error">
+            <small>{{'auth.general.errors.password' | translate}}</small>
+          </ion-text>
           }
         </ion-item>
         <ion-text color="primary" class="ion-text-end w-100">
-          <span (click)="openResetPasswordComponent()">Forgot password?</span>
+          <span (click)="openResetPasswordComponent()"
+            >{{'auth.signin.resetPassword' | translate}}</span
+          >
         </ion-text>
         <ion-item>
           <app-ion-button-loading
             class="w-100"
             type="submit"
-            text="Login"
+            [text]="'auth.signin.btnLogin'| translate"
             [disabled]="form.invalid || loading"
             [loading]="loading"
           ></app-ion-button-loading>
@@ -61,10 +70,7 @@
           <ion-grid fixed>
             <ion-row class="ion-justify-content-center">
               <ion-col size="2">
-                <ion-button
-                  color="google"
-                  (click)="signInWithGoogle()"
-                >
+                <ion-button color="google" (click)="signInWithGoogle()">
                   <ion-icon name="logo-google" slot="icon-only"></ion-icon>
                 </ion-button>
               </ion-col>
@@ -78,9 +84,11 @@
         </ion-item>
         <ion-item>
           <ion-text class="ion-text-center w-100">
-            <span>Don't have an account? </span>
+            <span>{{'auth.signin.dontHaveAccount' | translate}} </span>
             <ion-text color="primary">
-              <a routerLink="/auth/signup">Register Now</a>
+              <a routerLink="/auth/signup"
+                >{{'auth.signup.title' | translate}}</a
+              >
             </ion-text>
           </ion-text>
         </ion-item>

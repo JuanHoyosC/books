@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { UtilityService } from 'src/app/services/utility.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-signup',
@@ -12,13 +13,12 @@ import { UtilityService } from 'src/app/services/utility.service';
   styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage {
-
-
-  authService = inject(AuthService);
-  modalCtrl = inject(ModalController);
+  translateService = inject(TranslateService);
   utilityService = inject(UtilityService);
-  router = inject(Router);
+  modalCtrl = inject(ModalController);
+  authService = inject(AuthService);
   fb = inject(FormBuilder);
+  router = inject(Router);
   form: FormGroup;
   loading: boolean = false;
   constructor() {
@@ -52,14 +52,14 @@ export class SignupPage {
     try {
       const { nextStep } = await this.authService.signUp(user);
       if (nextStep.signUpStep === "CONFIRM_SIGN_UP") {
-        this.opengConfirmSignUpComponent();
+        this.openConfirmSignUpComponent();
       }
     } catch (error) {
       this.authService.manageAuthErrors(error);
     }
   }
 
-  async opengConfirmSignUpComponent() {
+  async openConfirmSignUpComponent() {
     this.showSendEmailMessage();
     const modal = await this.modalCtrl.create({
       component: ConfirmSignUpComponent,
@@ -73,17 +73,17 @@ export class SignupPage {
     const { data } = await modal.onWillDismiss();
 
     if (data && data.signUpStep === "DONE") {
-      this.router.navigateByUrl("/attendee/create");
+      this.router.navigateByUrl("/tabs/home");
     }
   }
 
   showSendEmailMessage() {
-    // this.conferenceService.showToast({
-    //   color: "success",
-    //   message: this.translateService.instant('auth.general.sendCodeMessage'),
-    //   duration: 10000,
-    //   icon: "checkmark-circle-sharp",
-    // });
+    this.utilityService.showToast({
+      color: "success",
+      message: this.translateService.instant('auth.general.sendCodeMessage'),
+      duration: 10000,
+      icon: "checkmark-circle-sharp",
+    });
   }
 
 }

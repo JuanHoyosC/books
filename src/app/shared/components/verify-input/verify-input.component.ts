@@ -24,6 +24,7 @@ import { IonInput } from '@ionic/angular';
 export class VerifyInputComponent implements ControlValueAccessor, OnChanges {
   @ViewChildren(IonInput) ionInputs!: QueryList<IonInput>;
   @Input() positions: number = 0;
+  @Input() label: string = '';
   digits: Digit[] = [];
   value: string | undefined = undefined; // Valor interno del input
   isDisabled: boolean = false; // Estado de deshabilitado

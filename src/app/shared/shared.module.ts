@@ -15,7 +15,7 @@ import { TranslateModule } from '@ngx-translate/core';
     CommonModule,
     IonicModule,
     FormsModule,
-    TranslateModule
+    TranslateModule.forChild(),
   ]
 })
 export class SharedModule { }

@@ -1,4 +1,5 @@
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
+import { TranslateService } from "@ngx-translate/core";
 import {
   confirmSignUp,
   signIn,
@@ -12,12 +13,15 @@ import {
   SignUpOutput,
   SignInOutput
 } from "aws-amplify/auth";
+import { UtilityService } from "src/app/services/utility.service";
 
 
 @Injectable({
   providedIn: "root",
 })
 export class AuthService {
+  translateService = inject(TranslateService);
+  utilityService = inject(UtilityService);
   userId: string = "";
   constructor() {}
 
@@ -37,7 +41,6 @@ export class AuthService {
   }
 
   async signUp(user: User): Promise<SignUpOutput> {
-    console.log(user)
     return signUp({
       username: user.username,
       password: user.password,
@@ -71,7 +74,20 @@ export class AuthService {
   }
 
   async manageAuthErrors(error: any) {
-    console.log(error);
+    let message = this.translateService.instant(
+      `auth.cognito.${error.message}`
+    );
+
+    await this.presentToast(message);
+  }
+
+  async presentToast(message: string) {
+    this.utilityService.showToast({
+      message,
+      color: "danger",
+      duration: 10000,
+      icon: "alert-circle-sharp",
+    });
   }
 
 

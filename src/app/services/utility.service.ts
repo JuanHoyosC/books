@@ -1,11 +1,15 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { AbstractControl, ValidatorFn } from '@angular/forms';
+import { ToastButton, ToastController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilityService {
-
+  toastController = inject(ToastController);
+  translateService = inject(TranslateService);
+  toast?: HTMLIonToastElement;
   constructor() { }
 
   whitespaceValidator(): ValidatorFn {
@@ -59,4 +63,37 @@ export class UtilityService {
       .replace(/[\u0300-\u036f]/g, "") // Removes diacritic characters
       .toLowerCase(); // Converts to lowercase
   }
+
+  async showToast(toast: Toast) {
+    toast.duration = toast.duration ?? 10000;
+    this.toast && this.toast.dismiss();
+    const buttons = toast?.buttons ?? [];
+    this.toast = await this.toastController.create({
+      message: toast.message,
+      duration: toast.duration,
+      header: toast?.header,
+      position: "top",
+      color: toast.color,
+      icon: toast.icon,
+      swipeGesture: "vertical",
+      mode: 'ios',
+      buttons: [
+        ...buttons,
+        {
+          role: "cancel",
+          icon: "close-sharp",
+        },
+      ],
+    });
+    await this.toast.present();
+  }
+}
+
+export interface Toast {
+  message: string;
+  header?: string;
+  color: string;
+  icon: string;
+  duration: number;
+  buttons?: ToastButton[] | undefined
 }

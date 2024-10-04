@@ -9,10 +9,25 @@
     min-width: 48px;
     min-height: 48px;
     border: 1px solid var(--ion-color-primary);
+    border-radius: 4px;
 }
 
 ion-input {
     text-align: center;
     color: var(--ion-color-primary);
     font-weight: var(--font-bold);
+    background-color: transparent;
+}
+
+:host ::ng-deep {
+    .input-wrapper {
+        --padding: 0;
+        --padding-end: 0;
+        --padding-start: 0;
+        --padding-left: 0;
+        --padding-right: 0;
+        --inner-padding-end: 0;
+        --ion-safe-area-left: 0;
+        --ion-safe-area-right: 0;
+    }
 }

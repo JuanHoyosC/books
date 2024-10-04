@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { ResetPasswordComponent } from '../components/reset-password/reset-password.component';
 import { ConfirmSignUpComponent } from '../components/confirm-sign-up/confirm-sign-up.component';
 import { UtilityService } from 'src/app/services/utility.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-signin',
@@ -14,11 +15,12 @@ import { UtilityService } from 'src/app/services/utility.service';
 })
 export class SigninPage {
 
-  authService = inject(AuthService);
-  modalCtrl = inject(ModalController);
+  translateService = inject(TranslateService)
   utilityService = inject(UtilityService);
-  router = inject(Router);
+  modalCtrl = inject(ModalController);
+  authService = inject(AuthService);
   fb = inject(FormBuilder);
+  router = inject(Router);
   form: FormGroup;
   loading: boolean = false;
   constructor() {
@@ -69,6 +71,7 @@ export class SigninPage {
   }
 
   async opengConfirmSignUpComponent() {
+    this.showSendEmailMessage();
     const modal = await this.modalCtrl.create({
       component: ConfirmSignUpComponent,
       componentProps: {
@@ -99,6 +102,15 @@ export class SigninPage {
 
   goToHomePage() {
     this.router.navigateByUrl("/tabs/home");
+  }
+
+  showSendEmailMessage() {
+    this.utilityService.showToast({
+      color: "success",
+      message: this.translateService.instant('auth.general.sendCodeMessage'),
+      duration: 10000,
+      icon: "checkmark-circle-sharp",
+    });
   }
 
 }

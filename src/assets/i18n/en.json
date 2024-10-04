@@ -1,0 +1,65 @@
+{
+  "auth": {
+    "cognito": {
+      "Password did not conform with policy: Password not long enough": "Password did not conform with policy",
+      "User already exists": "User already exists",
+      "Incorrect username or password.": "Incorrect username or password",
+      "Invalid verification code provided, please try again.": "Invalid verification code, please try again",
+      "Password attempts exceeded": "Attempt limit exceeded",
+      "Attempt limit exceeded, please try after some time.": "Attempt limit exceeded",
+      "username is required to resetPassword": "Username is required to reset password"
+    },
+    "general": {
+      "username": "Username",
+      "password": "Password",
+      "email": "Email",
+      "errors": {
+        "username": "Invalid user. Only letters (a-z), numbers (0-9) and characters (. _ -) are allowed.",
+        "email": "Invalid email",
+        "password": "Invalid password. It must have a minimum of 6 characters.",
+        "required": "Required field",
+        "passwordMismatch": "The passwords don't match."
+      },
+      "code": "Code",
+      "send": "Send",
+      "goToSignin": "Go to Sign In",
+      "sendCodeMessage": "A verification code has been sent to your email.",
+      "resetPasswordSuccessfullyMessage": "Your password has been successfully reset",
+      "signupSuccessMessage": "Successful authentication"
+    },
+    "signin": {
+      "title": "Sign In",
+      "resetPassword": "Reset password",
+      "dontHaveAccount": "Don't have an account?",
+      "btnLogin": "Log In"
+    },
+    "signup": {
+      "title": "Sign Up",
+      "alreadyHaveAccount": "Already have an account?",
+      "btnRegister": "Register"
+    },
+    "resetPassword": {
+      "title": "Reset password",
+      "resendCode": "Resend code",
+      "tryAgain": "Try again in {{time}} sec",
+      "repeatPassword": "Confirm password"
+    },
+    "confirmSignup": {
+      "title": "Verification code",
+      "code": "Enter the verification code that was sent to your email.",
+      "btnVerify": "Verify"
+    }
+  },
+  "general": {
+    "en": "English",
+    "es": "Spanish",
+    "search": "Search",
+    "requiredField": "Required field",
+    "savingInfo": "Saving info",
+    "loading": "Loading info",
+    "newMessage": "You have received a new message",
+    "cancel": "Cancel",
+    "ok": "OK",
+    "language": "Language"
+  }
+}
