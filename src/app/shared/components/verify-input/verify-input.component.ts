@@ -81,11 +81,9 @@ export class VerifyInputComponent implements ControlValueAccessor, OnChanges {
   validateSingleDigit(event: any, digitPos: number) {
     const currentIonInput = this.getIonInput(digitPos);
     if (!this.isNumeric(event.detail.value) && currentIonInput && event.detail.value !== '') {
-      console.log('', event.detail.value === '')
       currentIonInput.value = '';
       return;
     }
-    console.log('1', event.detail.value);
     let inputValue = event.detail.value;
     inputValue = inputValue.length == 0 ? undefined : inputValue.at(-1);
 
