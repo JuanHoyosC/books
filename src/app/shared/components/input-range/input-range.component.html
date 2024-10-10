@@ -1,0 +1,27 @@
+@if(label) {
+<ion-text color="primary" class="label">
+  <small>{{ label }}</small>
+</ion-text>
+}
+<div class="range">
+  @if(icon) {
+  <ion-text>
+    <ion-icon [name]="icon"></ion-icon>
+  </ion-text>
+  }
+  <ion-range
+    mode="md"
+    [min]="min"
+    [max]="max"
+    [step]="step"
+    [pin]="pin"
+    [pinFormatter]="pinFormatter"
+    [value]="value"
+    (ionInput)="onIonChange($event)"
+    class="ion-no-padding"
+    [ticks]="ticks" 
+    [snaps]="snaps"
+  ></ion-range>
+</div>
+
+
