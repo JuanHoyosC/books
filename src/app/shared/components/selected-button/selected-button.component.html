@@ -1,0 +1,19 @@
+<div class="more-settings-option">
+  <ion-button
+    shape="round"
+    [class]="fill"
+    [class.background]="mode === 'background'"
+    [class.active]="active"
+    [style.--background]="background"
+    [style.--border-color]="borderColor"
+    (click)="onClickEmit()"
+    mode="md"
+  >
+    <ion-icon slot="icon-only" [name]="icon"></ion-icon>
+  </ion-button>
+  @if(label) {
+  <ion-text color="primary">
+    <small>{{ label }}</small>
+  </ion-text>
+  }
+</div>

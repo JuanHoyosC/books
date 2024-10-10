@@ -1,0 +1,42 @@
+.more-settings-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  ion-button {
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    min-height: 40px;
+    --box-shadow: none;
+  }
+
+  ion-text {
+    text-align: center;
+    line-height: 12px;
+  }
+}
+
+.outline {
+    --background: rgba(var(--ion-color-primary-rgb), 0.4);
+    --color: #fff;
+    --border-color: transparent;
+}
+
+.active {
+    --background: var(--ion-color-primary);
+    --color: #fff;
+    --border-color: transparent;
+}
+
+ion-button.background.active::part(native) {
+    border: none;
+    outline: solid;
+    outline-color: var(--ion-color-primary);
+    outline-width: 2px;
+}
+
+ion-button::part(native) {
+    border: 1px solid var(--border-color);
+}
