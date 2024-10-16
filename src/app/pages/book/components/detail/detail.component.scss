@@ -1,0 +1,26 @@
+.info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  ion-img {
+    width: 240px;
+    img {
+        object-fit: contain;
+    }
+  }
+
+  ion-text {
+    display: block;
+  }
+
+  .author {
+    font-style: italic;
+    text-align: center;
+  }
+
+  .description {
+    text-align: justify;
+  }

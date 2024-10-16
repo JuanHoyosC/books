@@ -1,0 +1,130 @@
+<ion-menu side="end" contentId="book-content" type="push" #menu>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)="closeMenu()">
+          <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>{{ menuService.title }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    @if(menuService.content === 'search') {
+    <app-book-search></app-book-search>
+    } @switch(menuService.content) { @case("information") {
+    <app-book-detail></app-book-detail>
+    } @case("chapters") {
+    <app-book-chapters [chapters]="bookService.chapters"></app-book-chapters>
+    } @case("bookmarks") {
+    <app-book-marks></app-book-marks>
+
+    } @case("reminders") {
+    <app-book-reminders></app-book-reminders>
+    } }
+  </ion-content>
+</ion-menu>
+
+<ion-toast color="primary" position="top" #ionToast></ion-toast>
+
+<ion-modal
+  [initialBreakpoint]="1"
+  [breakpoints]="[0, 1]"
+  handle="false"
+  class="setting-modal"
+  #settingModal
+>
+  <ng-template>
+    <ion-button
+      shape="round"
+      color="primary"
+      class="boomark-button animate__animated animate__backInRight animate__faster"
+      (click)="bookService.savePage()"
+    >
+      <ion-icon
+        size="small"
+        [name]="bookService.isCurrentPageMarker() ? 'bookmark-sharp' : 'bookmark-outline'"
+        slot="icon-only"
+        color="warning"
+      ></ion-icon>
+    </ion-button>
+    <app-menu-book></app-menu-book>
+  </ng-template>
+</ion-modal>
+
+<ion-modal
+  [breakpoints]="[0, 1]"
+  [initialBreakpoint]="1"
+  mode="md"
+  handle="false"
+  class="modal-footer"
+  #noteModal
+>
+  <ng-template>
+    <app-note
+      style="height: 100%"
+      [annotationSelected]="bookService.currentAnnotation"
+    ></app-note>
+  </ng-template>
+</ion-modal>
+
+<ion-content [fullscreen]="true" id="book-content">
+  <div id="current"></div>
+  <div id="hidden"></div>
+</ion-content>
+
+<ion-footer
+  [style.--background]="settingService.setting.theme.background"
+  mode="md"
+>
+  <ion-toolbar [style.--background]="settingService.setting.theme.background">
+    @if(!bookService.loadingPagination) {
+    <div class="footer-progress">
+      <app-book-progress borderRadius="0" height="4px"></app-book-progress>
+    </div>
+    }
+    <ion-buttons slot="start">
+      <ion-button
+        (click)="openSettingModal()"
+        fill="clear"
+        shape="round"
+        size="small"
+        color="primary"
+      >
+        <ion-icon slot="icon-only" name="options-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <div class="pagination">
+      @if(bookService.loadingPagination) {
+      <ion-skeleton-text
+        [animated]="true"
+        style="width: 40px"
+      ></ion-skeleton-text>
+      <span [style.color]="settingService.setting.theme.color">/</span>
+      <ion-skeleton-text
+        [animated]="true"
+        style="width: 40px"
+      ></ion-skeleton-text>
+      }@else {
+      <span [style.color]="settingService.setting.theme.color"
+        >{{ bookService.currentPageIndex() }}</span
+      >
+      <span [style.color]="settingService.setting.theme.color">/</span>
+      <span [style.color]="settingService.setting.theme.color"
+        >{{ bookService.totalPages }}</span
+      >
+      }
+    </div>
+
+    <ion-buttons slot="end">
+      <ion-button fill="clear" size="small" (click)="bookService.savePage()">
+        <ion-icon
+          slot="icon-only"
+          [name]="bookService.isCurrentPageMarker()? 'bookmark-sharp' : 'bookmark-outline'"
+          color="warning"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

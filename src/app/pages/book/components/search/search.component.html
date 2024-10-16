@@ -1,0 +1,65 @@
+<section>
+  <ion-searchbar
+    [debounce]="500"
+    [(ngModel)]="searchValue"
+    (ionInput)="handleInput($event)"
+    #search
+  ></ion-searchbar>
+  @if(items.length && search.value) {
+    <ion-text color="primary" class="w-100 ion-text-center">
+      <p>Found {{ allItems.length }} matches</p>
+    </ion-text>
+  <ion-list>
+    @for(item of items; track item.cfi) {
+    <ion-item (click)="goToMark($index)" button>
+      <span [innerHTML]="item.excerpt | markText: search.value"></span>
+    </ion-item>
+
+    }
+  </ion-list>
+  <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  }
+</section>
+
+<ion-modal [initialBreakpoint]="1" [breakpoints]="[0, 1]" mode="md" handle="false" class="modal-footer" #modal>
+  <ng-template>
+    <ion-button
+    shape="round"
+    color="primary"
+    class="boomark-button animate__animated animate__backInRight animate__faster"
+    (click)="openNoteModal(allItems[index].cfi)"
+  >
+  <ion-icon slot="icon-only"
+  color="primary" name="brush-outline"></ion-icon>
+  </ion-button>
+    <section class="pagination-container animate__animated animate__backInUp animate__faster">
+      <ion-button fill="clear" size="small" (click)="openSearchMenu()">
+        <ion-icon slot="icon-only" name="search-outline"></ion-icon>
+      </ion-button>
+      <ion-text>
+        <small>{{ index + 1 }} of {{ allItems.length }}</small>
+      </ion-text>
+
+        <div class="pagination-buttons">
+          <ion-button
+          fill="clear"
+          size="small"
+          [disabled]="index === 0"
+          (click)="pagination(-1)"
+        >
+          <ion-icon slot="icon-only" name="chevron-back-outline"></ion-icon>
+        </ion-button>
+        <ion-button
+          fill="clear"
+          size="small"
+          [disabled]="index === allItems.length - 1"
+          (click)="pagination(1)"
+        >
+          <ion-icon slot="icon-only" name="chevron-forward-outline"></ion-icon>
+        </ion-button>
+        </div>
+    </section>
+  </ng-template>
+</ion-modal>

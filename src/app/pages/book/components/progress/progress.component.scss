@@ -1,0 +1,16 @@
+ion-range.custom-range::part(knob) {
+    opacity: 0;
+  }
+  
+  ion-range.custom-range {
+    --bar-height: 8px;
+    height: 8px;
+    --bar-border-radius: 8px;
+    --bar-background-active: linear-gradient(
+      to right, 
+      #ff9999,  /* Pastel Red */
+      #ffcc99,  /* Pastel Yellow */
+      #99ff99,  /* Pastel Green */
+      #99ccff   /* Pastel Blue */
+    );
+  }

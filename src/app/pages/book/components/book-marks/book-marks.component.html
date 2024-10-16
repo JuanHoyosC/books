@@ -1,0 +1,37 @@
+<section>
+  <ion-item lines="none" class="info">
+    <ion-icon name="information-circle-outline" slot="start" color="primary"></ion-icon>
+    <ion-label color="primary">Swipe item to remove</ion-label>
+  </ion-item>
+@if(bookService.bookMarkedPages.length) {
+  <ion-list>
+    @for(page of bookService.bookMarkedPages; track page.index) {
+    <ion-item-sliding>
+      <ion-item button (click)="goToPage(page.cfi)">
+        <div class="bookmark-container">
+          <small
+            ><ion-text color="medium">
+              <span>{{ page.date | date }} </span>
+            </ion-text>
+            <span
+              ><ion-icon name="bookmark-sharp" color="primary"></ion-icon> P.{{
+                page.index
+              }}</span
+            >
+          </small>
+          <ion-text>
+            <p>{{ page.cfi }}</p>
+          </ion-text>
+        </div>
+      </ion-item>
+      <ion-item-options slot="end">
+        <ion-item-option color="danger" expandable="true" (click)="bookService.removeBookMarkedPage($index)">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+    }
+  </ion-list>
+}
+
+</section>

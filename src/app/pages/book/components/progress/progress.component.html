@@ -1,0 +1,15 @@
+<ion-range
+  min="1"
+  [max]="bookService.totalPages"
+  step="1"
+  mode="md"
+  class="custom-range"
+  #rangePagination
+  [value]="bookService.currentPageIndex()"
+  (ionChange)="paginationChanged($event)"
+  [style.--bar-border-radius]="borderRadius"
+  [style.--bar-height]="height"
+  [style.height]="height"
+  #paginationProgress
+>
+</ion-range>

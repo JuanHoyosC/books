@@ -1,0 +1,42 @@
+.list-chapter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid #8787875b;
+}
+
+ion-list {
+    overflow: hidden;
+}
+
+ion-item {
+    --padding-end: 8px;
+    --padding-start: 8px;
+    --padding-left: 8px;
+    --padding-right: 8px;
+    --inner-padding-end: 0;
+    --ion-safe-area-left: 4px;
+    --ion-safe-area-right: 4px;
+}
+
+ion-label {
+    width: 100%;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+    overflow: hidden;
+}
+
+.h-auto {
+    height: auto;
+}
+
+.h-0 {
+    height: 0;
+}
+
+.active {
+    --background: rgba(var(--ion-color-primary-rgb), 0.3);
+    color: var(--ion-color-primary-tint);
+    font-weight: var(--font-bold);
+}

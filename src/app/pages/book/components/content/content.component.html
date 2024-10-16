@@ -1,0 +1,46 @@
+<section class="ion-padding" *ngIf="bookService.metadata">
+  <section>
+    <ion-text>
+      <h3 class="ion-no-margin">{{ bookService.metadata.title }}</h3>
+    </ion-text>
+    <ion-text>
+      <small style="font-style: italic; color: var(--ion-color-dark-tint)">{{
+        bookService.metadata.creator
+      }}</small>
+    </ion-text>
+  </section>
+  <div class="ion-padding-vertical">
+    @if(bookService.loadingPagination) {
+    <ion-skeleton-text
+      [animated]="true"
+      style="width: 100%; height: 8px; border-radius: 8px"
+    ></ion-skeleton-text>
+    <ion-skeleton-text
+      [animated]="true"
+      style="width: 24px; height: 8px; border-radius: 8px"
+    ></ion-skeleton-text>
+    }@else if(bookService.currentPage && bookService.pages){
+    <app-book-progress></app-book-progress>
+    <small>{{ bookService.paginationProgress }}%</small>
+    }
+  </div>
+
+  <div class="content-container">
+    @for(content of contentOptions; track content.label) {
+    <ion-card
+      class="ion-padding ion-no-margin content-card"
+      button
+      (click)="content.handle()"
+    >
+      <div class="content-card">
+        <ion-icon
+          [name]="content.icon"
+          size="large"
+          [color]="content.iconColor"
+        ></ion-icon>
+        <small>{{ content.label }}</small>
+      </div>
+    </ion-card>
+    }
+  </div>
+</section>

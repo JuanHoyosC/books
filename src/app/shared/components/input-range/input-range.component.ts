@@ -23,7 +23,7 @@ export class InputRangeComponent implements ControlValueAccessor {
   @Input() ticks: boolean = false;
   @Input() snaps: boolean = false;
   @Input() icon: string = '';
-  @Output() change: EventEmitter<number> = new EventEmitter();
+  @Output() changeEmited: EventEmitter<number> = new EventEmitter();
 
   value: number = 0; // Valor interno del input
   isDisabled: boolean = false; // Estado de deshabilitado
@@ -34,7 +34,7 @@ export class InputRangeComponent implements ControlValueAccessor {
 
   onIonChange(ev: Event) {
     this.value = (ev as RangeCustomEvent).detail.value as number;
-    this.change.emit(this.value);
+    this.changeEmited.emit(this.value);
     this.onChange(this.value);
   }
 

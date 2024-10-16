@@ -1,0 +1,59 @@
+@if(annotation) {
+  <form
+  class="animate__animated animate__fadeIn animate__faster border-bottom"
+  *ngIf="showInputNote"
+>
+  <ion-textarea
+    placeholder="write a note"
+    name="note"
+    [autoGrow]="true"
+    [(ngModel)]="annotation.note"
+    maxlength="200"
+  ></ion-textarea>
+</form>
+
+<nav class="border-bottom">
+  <div>
+    <ion-button fill="clear" shape="round" size="small" (click)="copyText()">
+      <ion-icon slot="icon-only" name="clipboard-outline"></ion-icon>
+    </ion-button>
+    <ion-button
+      fill="clear"
+      shape="round"
+      size="small"
+      (click)="showInputNote = !showInputNote"
+    >
+      <ion-icon slot="icon-only" name="text-sharp"></ion-icon>
+    </ion-button>
+  </div>
+  <div class="colors">
+    @for(color of bookService.noteColors; track color) {
+    <ion-button
+      fill="clear"
+      [style.--background]="color"
+      shape="round"
+      size="small"
+      (click)="setColor(color)"
+    >
+      @if(annotation.color === color) {
+      <ion-icon slot="icon-only" name="close-sharp" style="color: #121212"></ion-icon>
+      }
+    </ion-button>
+    }
+  </div>
+  <ion-button fill="clear" shape="round" size="small" (click)="share()">
+    <ion-icon slot="icon-only" name="share-social-outline"></ion-icon>
+  </ion-button>
+</nav>
+<footer>
+  <ion-button fill="clear" size="small" color="danger" (click)="closeNoteModal()">
+    Cancelar
+  </ion-button>
+  <div>
+    <ion-button fill="clear" size="small" color="success" (click)="saveNote()">
+      save
+    </ion-button>
+  </div>
+</footer>
+
+}

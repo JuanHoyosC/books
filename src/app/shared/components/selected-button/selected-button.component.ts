@@ -11,12 +11,12 @@ export class SelectedButtonComponent {
   @Input() fill: string = ''
   @Input() active: boolean = false;
   @Input() mode: 'auto' | 'background' = 'auto';
-  @Input('--background') background: string = '';
-  @Input('--border-color') borderColor: string= ''
-  @Output() onClick: EventEmitter<any> = new EventEmitter();
+  @Input() background: string = '';
+  @Input() borderColor: string= ''
+  @Output() clickEmited: EventEmitter<any> = new EventEmitter();
 
   onClickEmit() {
-    this.onClick.emit();
+    this.clickEmited.emit();
   }
 
 }

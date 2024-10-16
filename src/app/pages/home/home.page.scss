@@ -1,0 +1,87 @@
+#viewer {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+ion-text {
+  display: block;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+ion-item-divider + ion-list {
+  padding-left: 16px;
+}
+
+.setting {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  p {
+    margin: 0;
+    margin-bottom: 16px;
+    font-weight: var(--font-bold);
+  }
+
+  ion-button::part(native) {
+    padding: 0 8px;
+    min-width: 40px;
+    min-height: auto;
+  }
+
+  .theme ion-button {
+    --border-width: 0;
+  }
+}
+
+article {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 16px;
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+::selection {
+  background-color: yellow; /* Color de selección */
+  color: black;
+}
+
+
+:host ::ng-deep {
+  ion-range {
+  --bar-height: 32px;
+  --bar-border-radius: 8px;
+  }
+
+  .range {
+    position: relative;
+    ion-text {
+      position: absolute;
+      top: 12px;
+      left: 8px;
+      z-index: 3;
+    }
+  
+    ion-icon {
+      color: #fff;
+    }
+  }
+
+  .range-knob-handle  {
+    opacity: 0;
+  }
+}
+
+ion-modal {
+  --height: auto;
+}

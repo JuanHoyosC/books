@@ -1,0 +1,68 @@
+ion-header,
+ion-footer {
+  box-shadow: none !important;
+}
+
+ion-modal {
+  --height: auto;
+}
+
+.themes {
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 8px;
+}
+
+
+.font {
+  height: 80px;
+}
+
+swiper-container {
+  height: 100%;
+}
+
+swiper-slide {
+  font-size: var(--font-size-h3);
+}
+
+.ranges-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 16px;
+}
+
+
+:host ::ng-deep {
+  ion-accordion ion-item {
+    --background: transparent;
+  }
+}
+
+swiper-container {
+  --swiper-pagination-color: var(--ion-color-primary);
+  --swiper-pagination-bullet-width: 4px;
+  --swiper-pagination-bullet-height: 4px;
+}
+
+ion-accordion {
+  display: flex;
+  flex-direction: column;
+}
+
+ion-accordion::part(header) {
+  order: 1;
+}
+
+
+ion-accordion::part(header) {
+  --ion-color-base: transparent;
+  padding: 0 8px;
+}
+
+.more-settings-container {
+  display: grid;
+  justify-content: center;
+  gap: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
+}

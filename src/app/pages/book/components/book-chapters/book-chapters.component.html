@@ -1,0 +1,42 @@
+<section>
+  <ion-list>
+    @for(chapter of chapters; track chapter.id) { @if(!chapter.subitems?.length)
+    {
+    <ion-item
+      [class.active]="chapter.href === bookService.currentLocation.end.href "
+      (click)="goToChapter(chapter.href)"
+      button
+    >
+      <ion-label>{{ chapter.label }}</ion-label>
+    </ion-item>
+    } @else {
+    <ion-item
+      [class.active]="chapter.href === bookService.currentLocation.end.href "
+      (click)="goToChapter(chapter.href)"
+    >
+      <ion-icon
+        aria-hidden="true"
+        [name]="
+          items[$index].active ? 'chevron-up-outline' : 'chevron-down-outline'
+        "
+        color="primary"
+        slot="end"
+        (click)="
+          $event.stopPropagation(); items[$index].active = !items[$index].active
+        "
+      ></ion-icon>
+      <ion-label>{{ chapter.label }}</ion-label>
+    </ion-item>
+
+    @if(chapter.subitems) {
+    <div
+      [ngClass]="{
+        'h-auto': items[$index].active,
+        'h-0': !items[$index].active
+      }"
+    >
+      <app-book-chapters [chapters]="chapter.subitems"></app-book-chapters>
+    </div>
+    } } }
+  </ion-list>
+</section>

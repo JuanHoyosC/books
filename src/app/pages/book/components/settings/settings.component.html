@@ -1,0 +1,163 @@
+<section>
+  <article class="border-bottom ion-padding">
+    <article class="border-bottom themes">
+      @for(theme of themes; track theme.name) {
+      <app-selected-button
+        fill="outline"
+        mode="background"
+        [active]="settingService.setting.theme.name === theme.name"
+        [background]="theme.background"
+        [borderColor]="theme.borderColor"
+        (clickEmited)="setTheme(theme)"
+      ></app-selected-button>
+      }
+    </article>
+
+    <article class="font ion-padding-vertical border-bottom ion-margin-bottom">
+      <ion-label>Font</ion-label>
+      <swiper-container [slidesPerView]="1" [loop]="true" pagination  effect="slide" (slideNextTransitionEnd)="onFontChange($event)">
+        @for(font of fonts; track font) {
+        <swiper-slide class="ion-text-center">{{ font }}</swiper-slide>
+        }
+      </swiper-container>
+    </article>
+    <div class="ranges-container">
+      <app-input-range
+        label="size"
+        [min]="8"
+        [max]="32"
+        [(ngModel)]="settingService.setting.fontSize"
+        (changeEmited)="setFontSize($event)"
+        icon="text-outline"
+      ></app-input-range>
+
+      <app-input-range
+        label="line height"
+        [min]="1"
+        [max]="3"
+        [step]="0.2"
+        [ticks]="false"
+        [snaps]="false"
+        [(ngModel)]="settingService.setting.lineHeight"
+        (changeEmited)="setLineHeight($event)"
+        icon="reorder-four-sharp"
+      ></app-input-range>
+
+      <app-input-range
+        label="margin"
+        [min]="0"
+        [max]="40"
+        [ticks]="false"
+        [snaps]="false"
+        [(ngModel)]="settingService.setting.margin"
+        (changeEmited)="setMargin($event)"
+        icon="reader-sharp"
+      ></app-input-range>
+      <app-input-range
+        label="brightness"
+        [min]="0"
+        [max]="1"
+        [step]="0.1"
+        (changeEmited)="setBrightness($event)"
+        [(ngModel)]="settingService.setting.brightness"
+        icon="sunny-sharp"
+      ></app-input-range>
+    </div>
+  </article>
+
+  <ion-footer>
+    <ion-accordion-group
+      #accordionGroup
+      mode="md"
+      (ionChange)="onAccordionChange($event)"
+    >
+      <ion-accordion value="first">
+        <ion-item slot="header">
+          <ion-label>{{
+            isMoreSettingsOpen ? "Less settings" : "More seetings"
+          }}</ion-label>
+        </ion-item>
+        <div class="ion-padding more-settings-container" slot="content">
+          <app-selected-button
+            label="Orientation"
+            icon="phone-portrait-outline"
+            (clickEmited)="openMoreSettingsModal('orientation')"
+          ></app-selected-button>
+          <app-selected-button
+            label="Change pages"
+            icon="reader-outline"
+            (clickEmited)="openMoreSettingsModal('page')"
+          ></app-selected-button>
+          <app-selected-button
+            label="Buttons flipping"
+            icon="heart"
+          ></app-selected-button>
+          <app-selected-button
+            label="Hyphenation"
+            [active]="settingService.setting.hyphen"
+            icon="remove-outline"
+            fill="outline"
+            (clickEmited)="setHyphen()"
+          ></app-selected-button>
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+  </ion-footer>
+</section>
+
+<!--Orientation modal-->
+<ion-modal #moreSettingsModal [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+  <ng-template>
+    <ion-header mode="md">
+      <ion-toolbar>
+        <ion-title>{{
+          moreSettingSelected === "orientation"
+            ? "Orientation"
+            : "Transition mode"
+        }}</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="closeMoreSettingsModal()">
+            <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    @switch (moreSettingSelected) { @case ("orientation") {
+    <div class="ion-padding more-settings-container">
+      @for(orientation of orientationOptions; track orientation.label) {
+      <app-selected-button
+        [label]="orientation.label"
+        [icon]="orientation.icon"
+        fill="outline"
+        [active]="settingService.setting.orientation === orientation.value"
+        (clickEmited)="setOrientation(orientation.value)"
+      ></app-selected-button>
+      }
+    </div>
+    } @case ("page") {
+    <div class="ion-padding more-settings-container">
+      <app-selected-button
+        label="Auto rotate"
+        icon="refresh-outline"
+        fill="outline"
+        [active]="false"
+      ></app-selected-button>
+      <app-selected-button
+        label="Portrait"
+        icon="phone-portrait-outline"
+        fill="outline"
+      ></app-selected-button>
+      <app-selected-button
+        label="Landscape"
+        icon="phone-landscape-outline"
+        fill="outline"
+      ></app-selected-button>
+      <app-selected-button
+        label="Landscape"
+        icon="phone-landscape-outline"
+        fill="outline"
+      ></app-selected-button>
+    </div>
+    } }
+  </ng-template>
+</ion-modal>

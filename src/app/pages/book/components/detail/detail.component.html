@@ -1,0 +1,14 @@
+<section class="info-container ion-padding">
+  <ion-img [src]="bookImage"></ion-img>
+<div class="border-bottom ion-padding-bottom w-100">
+  <ion-text color="primary" class="ion-text-center w-100">
+    <h2 class="ion-no-margin">{{ bookService.metadata.title }}</h2>
+  </ion-text>
+  <ion-text class="ion-text-center w-100 author" color="medium">
+    <small>{{ bookService.metadata.creator }}</small>
+  </ion-text>
+</div>
+  <ion-text>
+    <p class="ion-no-margin description">{{ bookService.metadata.description }}</p>
+  </ion-text>
+</section>

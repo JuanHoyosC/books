@@ -1,0 +1,44 @@
+ion-item {
+  --padding-end: 8px;
+  --padding-start: 8px;
+  --padding-left: 8px;
+  --padding-right: 8px;
+  --inner-padding-end: 0;
+  --ion-safe-area-left: 4px;
+  --ion-safe-area-right: 4px;
+}
+
+ion-label {
+  width: 100%;
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
+  overflow: hidden;
+}
+
+.bookmark-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+  padding: 16px 0;
+
+  p {
+    margin: 0;
+    width: 100%;
+    overflow: hidden;
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+small {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+
+.info::part(native) {
+    --background: rgba(var(--ion-color-primary-rgb), 0.3);
+    font-weight: var(--font-bold);
+}

@@ -1,0 +1,69 @@
+ion-modal.setting-modal {
+  --height: var(--setting-modal-height);
+  --overflow: visible;
+}
+
+ion-menu {
+  z-index: 11;
+  --min-width: 100%;
+}
+
+ion-toast {
+  --max-width: min-content;
+  --border-radius: 8px;
+  --box-shadow: none;
+}
+
+ion-toast::part(container) {
+  color: #fff;
+}
+
+ion-button.boomark-button {
+  position: absolute;
+  top: -48px;
+  right: 8px;
+  z-index: 11;
+  transition: all 5s linear;
+  &::part(native) {
+    background-color: #fff;
+    width: 32px;
+    height: 32px;
+    max-width: 32px;
+    max-height: 32px;
+    min-height: 32px;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+ion-footer {
+  box-shadow: none;
+  --border: none;
+  ion-toolbar {
+    --padding-bottom: 0;
+    --padding-top: 0;
+    --padding-end: 0;
+    --padding-start: 0;
+    --height: 40px;
+    height: 40px;
+    --min-height: 40px;
+  }
+}
+
+.footer-progress {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+
+#hidden {
+  position: fixed;
+  width: 100%;
+}
